@@ -1,0 +1,319 @@
+admin@Gabbys-Macbook learb % git init .
+Initialized empty Git repository in /Users/admin/Documents/PROGRAMS/learb/.git/
+admin@Gabbys-Macbook learb % ls -a
+.       ..      .git    main.py
+admin@Gabbys-Macbook learb % git add .
+admin@Gabbys-Macbook learb % git commit -m "First commit"
+[master (root-commit) 01c4c05] First commit
+ 2 files changed, 2 insertions(+)
+ create mode 100644 main.py
+ create mode 100644 second.py
+admin@Gabbys-Macbook learb % git add .                   
+admin@Gabbys-Macbook learb % git commit -m "Second commit"
+[master 25df8d2] Second commit
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+admin@Gabbys-Macbook learb % git log
+commit 25df8d2e68e98c2fb8f1db3c0f15a4680e0e0fdd (HEAD -> master)
+Author: GabbyGreat <gabrieloranekwu@gmail.com>
+Date:   Mon Oct 30 17:54:07 2023 +0100
+
+    Second commit
+
+commit 01c4c05d57b3070198b8dcf169e36f94833cc7e5
+Author: GabbyGreat <gabrieloranekwu@gmail.com>
+Date:   Mon Oct 30 17:53:07 2023 +0100
+
+    First commit
+admin@Gabbys-Macbook learb % git log --oneline
+25df8d2 (HEAD -> master) Second commit
+01c4c05 First commit
+admin@Gabbys-Macbook learb % git remote add origin https://github.com/gabbygreat/learn.git
+admin@Gabbys-Macbook learb % git remote
+origin
+admin@Gabbys-Macbook learb % git remote
+origin
+admin@Gabbys-Macbook learb % git remote add origin https://github.com/gabbygreat/learn.git
+error: remote origin already exists.
+admin@Gabbys-Macbook learb % git remote add fake https://github.com/gabbygreat/learn.git
+admin@Gabbys-Macbook learb % git remote                                                   
+fake
+origin
+admin@Gabbys-Macbook learb % git branch -M main    
+admin@Gabbys-Macbook learb % git branch -M master
+admin@Gabbys-Macbook learb % git push origin master
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (7/7), 570 bytes | 570.00 KiB/s, done.
+Total 7 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/gabbygreat/learn.git
+ * [new branch]      master -> master
+admin@Gabbys-Macbook learb % git add .                                                    
+admin@Gabbys-Macbook learb % git commit -m ":boom: Added"
+[master 1e5de92] :boom: Added
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+admin@Gabbys-Macbook learb % git push origin master      
+To https://github.com/gabbygreat/learn.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/gabbygreat/learn.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+admin@Gabbys-Macbook learb % git pull origin master
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 695 bytes | 173.00 KiB/s, done.
+From https://github.com/gabbygreat/learn
+ * branch            master     -> FETCH_HEAD
+   25df8d2..e027e4c  master     -> origin/master
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint: 
+hint:   git config pull.rebase false  # merge
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint: 
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+fatal: Need to specify how to reconcile divergent branches.
+admin@Gabbys-Macbook learb % git pull origin master --no-rebase
+From https://github.com/gabbygreat/learn
+ * branch            master     -> FETCH_HEAD
+Merge made by the 'ort' strategy.
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+admin@Gabbys-Macbook learb % git push origin master            
+Enumerating objects: 9, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (5/5), 596 bytes | 596.00 KiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/gabbygreat/learn.git
+   e027e4c..e730314  master -> master
+admin@Gabbys-Macbook learb % git pull origin master --no-rebase
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 667 bytes | 166.00 KiB/s, done.
+From https://github.com/gabbygreat/learn
+ * branch            master     -> FETCH_HEAD
+   e730314..381db1f  master     -> origin/master
+Updating e730314..381db1f
+error: Your local changes to the following files would be overwritten by merge:
+        second.py
+Please commit your changes or stash them before you merge.
+Aborting
+admin@Gabbys-Macbook learb % git add .
+admin@Gabbys-Macbook learb % git commit -m ":fire: Fourth"
+[master e31707f] :fire: Fourth
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+admin@Gabbys-Macbook learb % git push origin master            
+To https://github.com/gabbygreat/learn.git
+ ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'https://github.com/gabbygreat/learn.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+admin@Gabbys-Macbook learb % git pull origin master --no-rebase
+From https://github.com/gabbygreat/learn
+ * branch            master     -> FETCH_HEAD
+Auto-merging second.py
+CONFLICT (content): Merge conflict in second.py
+Automatic merge failed; fix conflicts and then commit the result.
+admin@Gabbys-Macbook learb % git add .
+admin@Gabbys-Macbook learb % git add .
+admin@Gabbys-Macbook learb % git status
+On branch master
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+admin@Gabbys-Macbook learb % git commit -m ":recycle: Fix"
+[master 8343bad] :recycle: Fix
+admin@Gabbys-Macbook learb % git status                   
+On branch master
+nothing to commit, working tree clean
+admin@Gabbys-Macbook learb % git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   second.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+admin@Gabbys-Macbook learb % git restore .
+admin@Gabbys-Macbook learb % git restore .
+admin@Gabbys-Macbook learb % git push origin master            
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 424 bytes | 424.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/gabbygreat/learn.git
+   381db1f..8343bad  master -> master
+admin@Gabbys-Macbook learb % git log --oneline
+8343bad (HEAD -> master, origin/master) :recycle: Fix
+e31707f :fire: Fourth
+381db1f Update second.py
+e730314 Merge branch 'master' of https://github.com/gabbygreat/learn
+1e5de92 :boom: Added
+e027e4c Create README.md
+25df8d2 Second commit
+01c4c05 First commit
+admin@Gabbys-Macbook learb % git checkout 01c4c05
+Note: switching to '01c4c05'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 01c4c05 First commit
+admin@Gabbys-Macbook learb % git branch
+* (HEAD detached at 01c4c05)
+  master
+admin@Gabbys-Macbook learb % git switch master
+Previous HEAD position was 01c4c05 First commit
+Switched to branch 'master'
+admin@Gabbys-Macbook learb % git branch
+* master
+admin@Gabbys-Macbook learb % git branch -b test
+error: unknown switch `b'
+usage: git branch [<options>] [-r | -a] [--merged] [--no-merged]
+   or: git branch [<options>] [-f] [--recurse-submodules] <branch-name> [<start-point>]
+   or: git branch [<options>] [-l] [<pattern>...]
+   or: git branch [<options>] [-r] (-d | -D) <branch-name>...
+   or: git branch [<options>] (-m | -M) [<old-branch>] <new-branch>
+   or: git branch [<options>] (-c | -C) [<old-branch>] <new-branch>
+   or: git branch [<options>] [-r | -a] [--points-at]
+   or: git branch [<options>] [-r | -a] [--format]
+
+Generic options
+    -v, --verbose         show hash and subject, give twice for upstream branch
+    -q, --quiet           suppress informational messages
+    -t, --track[=(direct|inherit)]
+                          set branch tracking configuration
+    -u, --set-upstream-to <upstream>
+                          change the upstream info
+    --unset-upstream      unset the upstream info
+    --color[=<when>]      use colored output
+    -r, --remotes         act on remote-tracking branches
+    --contains <commit>   print only branches that contain the commit
+    --no-contains <commit>
+                          print only branches that don't contain the commit
+    --abbrev[=<n>]        use <n> digits to display object names
+
+Specific git-branch actions:
+    -a, --all             list both remote-tracking and local branches
+    -d, --delete          delete fully merged branch
+    -D                    delete branch (even if not merged)
+    -m, --move            move/rename a branch and its reflog
+    -M                    move/rename a branch, even if target exists
+    -c, --copy            copy a branch and its reflog
+    -C                    copy a branch, even if target exists
+    -l, --list            list branch names
+    --show-current        show current branch name
+    --create-reflog       create the branch's reflog
+    --edit-description    edit the description for the branch
+    -f, --force           force creation, move/rename, deletion
+    --merged <commit>     print only branches that are merged
+    --no-merged <commit>  print only branches that are not merged
+    --column[=<style>]    list branches in columns
+    --sort <key>          field name to sort on
+    --points-at <object>  print only branches of the object
+    -i, --ignore-case     sorting and filtering are case insensitive
+    --recurse-submodules  recurse through submodules
+    --format <format>     format to use for the output
+
+admin@Gabbys-Macbook learb % git checkout -b test
+Switched to a new branch 'test'
+admin@Gabbys-Macbook learb % git branch          
+  master
+* test
+admin@Gabbys-Macbook learb % git push origin ifeanyi
+error: src refspec ifeanyi does not match any
+error: failed to push some refs to 'https://github.com/gabbygreat/learn.git'
+admin@Gabbys-Macbook learb % git push origin test   
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'test' on GitHub by visiting:
+remote:      https://github.com/gabbygreat/learn/pull/new/test
+remote: 
+To https://github.com/gabbygreat/learn.git
+ * [new branch]      test -> test
+admin@Gabbys-Macbook learb % git add .
+admin@Gabbys-Macbook learb % git commit -m ":fire: All done"
+[test 694806f] :fire: All done
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+admin@Gabbys-Macbook learb % git push origin test           
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 343 bytes | 343.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/gabbygreat/learn.git
+   8343bad..694806f  test -> test
+admin@Gabbys-Macbook learb % git add .
+admin@Gabbys-Macbook learb % git commit -m ":ehfj"
+[test 1e80bcf] :ehfj
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+admin@Gabbys-Macbook learb % git pull origin master
+remote: Enumerating objects: 8, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), 1.29 KiB | 265.00 KiB/s, done.
+From https://github.com/gabbygreat/learn
+ * branch            master     -> FETCH_HEAD
+   8343bad..c612a89  master     -> origin/master
+hint: You have divergent branches and need to specify how to reconcile them.
+hint: You can do so by running one of the following commands sometime before
+hint: your next pull:
+hint: 
+hint:   git config pull.rebase false  # merge
+hint:   git config pull.rebase true   # rebase
+hint:   git config pull.ff only       # fast-forward only
+hint: 
+hint: You can replace "git config" with "git config --global" to set a default
+hint: preference for all repositories. You can also pass --rebase, --no-rebase,
+hint: or --ff-only on the command line to override the configured default per
+hint: invocation.
+fatal: Need to specify how to reconcile divergent branches.
+admin@Gabbys-Macbook learb % git pull origin master --no-rebase
+From https://github.com/gabbygreat/learn
+ * branch            master     -> FETCH_HEAD
+Merge made by the 'ort' strategy.
+ main.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+admin@Gabbys-Macbook learb % git branch
+  master
+* test
+admin@Gabbys-Macbook learb % git branch -D master
+Deleted branch master (was 8343bad).
+admin@Gabbys-Macbook learb %    
